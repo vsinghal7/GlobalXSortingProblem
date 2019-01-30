@@ -13,22 +13,26 @@ namespace GlobalXSortingProblem
 
         }
 
-        public List<string> GetSortedNames(List<string> names)
+        public List<string> WriteSortedNames(List<string> names)
         {
             try
             {
-                if (names.Count == 0) Console.WriteLine("Please Enter some names to sort in txt file");
-                var list = new List<string>();
+                var sortedList = new List<string>();
+                if (names.Count == 0)
+                {
+                    Console.WriteLine("Please Enter some names to sort in txt file");
+                    return sortedList;
+                }
                 names.Sort();
                 using (StreamWriter streamWriter = new StreamWriter(Path.Combine(docPath, "sorted-names-list.txt"), false))
                 {
                     foreach (string line in names)
                     {
                         streamWriter.WriteLine(ReverseString(line));
-                        list.Add(ReverseString(line));
+                        sortedList.Add(ReverseString(line));
                     }
                 }
-                return list;
+                return sortedList;
             }
             catch (Exception ex)
             {

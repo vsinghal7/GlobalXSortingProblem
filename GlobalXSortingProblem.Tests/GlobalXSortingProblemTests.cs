@@ -8,6 +8,7 @@ namespace GlobalXSortingProblemTests
     [TestClass]
     public class GlobalXSortingProblemTests
     {
+        //If the input list has some name.
         [TestMethod]
         public void GetSortedNamesTests_1()
         {
@@ -24,9 +25,40 @@ namespace GlobalXSortingProblemTests
             testNames.Add("Vinod Henkels Vinod");
             testNames.Add("Vinod Vinod Vinod");
 
-            var result = nameSorting.GetSortedNames(testNames);
+            var result = nameSorting.WriteSortedNames(testNames);
             Assert.IsNotNull(result);
             Assert.AreEqual(result.Count, testNames.Count);
+
+        }
+
+        //If the input list count is zero
+        [TestMethod]
+        public void GetSortedNamesTests_2()
+        {
+            INameSorting nameSorting = new NameSorting();
+            List<string> testNames = new List<string>();
+
+            var result = nameSorting.WriteSortedNames(testNames);
+            Assert.IsNotNull(result);
+            Assert.AreEqual(result.Count, 0);
+
+        }
+
+        //If there is an exception
+        [TestMethod]
+        public void GetSortedNamesTests_3()
+        {
+            INameSorting nameSorting = new NameSorting();
+            List<string> testNames = null;
+            try
+            {
+                var result = nameSorting.WriteSortedNames(testNames);
+                Assert.Fail("no exception thrown");
+            }
+            catch (Exception ex)
+            {
+                Assert.IsTrue(ex is Exception);
+            }
 
         }
     }

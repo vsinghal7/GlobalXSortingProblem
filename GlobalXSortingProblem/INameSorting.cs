@@ -8,7 +8,7 @@ namespace GlobalXSortingProblem
 {
     public interface INameSorting
     {
-        List<string> GetSortedNames(List<string> names);
+        List<string> WriteSortedNames(List<string> names);
         string ReverseString(string s);
     }
 }
